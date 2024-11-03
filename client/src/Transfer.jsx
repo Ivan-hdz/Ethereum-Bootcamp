@@ -1,7 +1,8 @@
 import { useState } from "react";
 import server from "./server";
+import {signData} from './shared/utils/sign';
 
-function Transfer({ address, setBalance }) {
+function Transfer({ address, setBalance, privateKey }) {
   const [sendAmount, setSendAmount] = useState("");
   const [recipient, setRecipient] = useState("");
 
@@ -11,13 +12,22 @@ function Transfer({ address, setBalance }) {
     evt.preventDefault();
     
     try {
-      const {
-        data: { balance },
-      } = await server.post(`send`, {
+      const payload = {
         sender: address,
         amount: parseInt(sendAmount),
         recipient,
-      });
+      };
+      const [dataHash, dataSign] = signData(privateKey, payload);
+
+      const {
+        data: { balance },
+      } = await server.post(`send`, 
+        {
+          ... payload,
+          hash: dataHash,
+          sign: dataSign
+        }
+      );
       setBalance(balance);
     } catch (ex) {
       alert(ex.response.data.message);
