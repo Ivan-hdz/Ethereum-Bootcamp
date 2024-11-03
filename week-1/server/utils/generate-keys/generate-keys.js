@@ -1,6 +1,6 @@
-const secp = require('ethereum-cryptography/secp256k1');
-const {toHex} = require('ethereum-cryptography/utils');
-const {keccak256} = require('ethereum-cryptography/keccak');
+const secp = require('../../node_modules/ethereum-cryptography/secp256k1');
+const {toHex} = require('../../node_modules/ethereum-cryptography/utils');
+const {keccak256} = require('../../node_modules/ethereum-cryptography/keccak');
 const {appendFileSync} = require('fs');
 const path = require('path')
 const filePath = path.join(__dirname, 'generated.txt');

@@ -1,8 +1,10 @@
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const port = 3042;
+import express from 'express';
+import cors from 'cors';
+import {validateSender, validateIntegrity} from './utils/validate-transaction.js';
 
+const app = express();
+
+const port = 3042;
 app.use(cors());
 app.use(express.json());
 
@@ -20,7 +22,14 @@ app.get("/balance/:address", (req, res) => {
 
 app.post("/send", (req, res) => {
   const { sender, recipient, amount, hash, sign, rbit } = req.body;
-
+  if (validateSender(hash, sign, rbit, sender) === false) {
+    res.status(400).send({message: 'Invalid sender'});
+    return;
+  }
+  if (validateIntegrity(sender, recipient, amount, hash) === false) {
+    res.status(400).send({message: 'Data manipulated'});
+    return;
+  }
   setInitialBalance(sender);
   setInitialBalance(recipient);
 

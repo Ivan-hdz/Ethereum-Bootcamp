@@ -1,4 +1,6 @@
-## ECDSA Node
+# Bootcamp projects
+
+## ECDSA Node (Week 1)
 
 This project is an example of using a client and server to facilitate transfers between different addresses. Since there is just a single server on the back-end handling transfers, this is clearly very centralized. We won't worry about distributed consensus for this project.
 
@@ -35,10 +37,10 @@ _Hint_ - Use [nodemon](https://www.npmjs.com/package/nodemon) instead of `node` 
 ### Generating Address from Private key
 
 - Get private key
-- Extract public key with `getPublicKey` method and uncompressed `compressed=false`
+- Extract public key with `getPublicKey` 
 - Trim the first byte from returned public key
 - Hash the public key with keccak hash
-- Return the las 20 bytes from public key as address
+- Return the last 20 bytes from public key as address
 
 https://github.com/paulmillr/noble-curves?tab=readme-ov-file#upgrading
 
