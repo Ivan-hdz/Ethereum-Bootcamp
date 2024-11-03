@@ -1,4 +1,4 @@
-# Bootcamp projects
+# Alchemy University Ethereum Developer Bootcamp Projects
 
 ## ECDSA Node (Week 1)
 
