@@ -17,7 +17,7 @@ function Transfer({ address, setBalance, privateKey }) {
         amount: parseInt(sendAmount),
         recipient,
       };
-      const [dataHash, dataSign] = signData(privateKey, payload);
+      const [dataHash, dataSign, recovery] = signData(privateKey, payload);
 
       const {
         data: { balance },
@@ -25,11 +25,13 @@ function Transfer({ address, setBalance, privateKey }) {
         {
           ... payload,
           hash: dataHash,
-          sign: dataSign
+          sign: dataSign,
+          rbit: recovery
         }
       );
       setBalance(balance);
     } catch (ex) {
+      console.error(ex);
       alert(ex.response.data.message);
     }
   }

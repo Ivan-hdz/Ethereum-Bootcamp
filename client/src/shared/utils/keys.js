@@ -10,7 +10,7 @@ export const getAddressFromPk = (pk,hexFormat)  => {
     // Hashing the public key and returning the last 20 bytes from the hash as address
     const addrr = keccak256( 
         binaryPub
-    ).slice(-40); 
+    ).slice(-20); 
     return hexFormat ? `0x${toHex(addrr)}` : addrr;
 
 }
