@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Solidity backend for faucet example excercise",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "hardhat node",
+    "deploy": "hardhat run ./scripts/deploy.ts --network local",
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "clean": "hardhat clean"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.17"
+  }
+}
