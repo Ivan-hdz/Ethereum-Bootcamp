@@ -5,9 +5,10 @@ contract Faucet {
     constructor() {
         
     }
-    function requestEther(uint _quantity) external {
+    function requestEther(address payable to, uint _quantity) external {
         require(_quantity <= 10 ** 18, 'Max quantity per transaction reached');
-        payable(msg.sender).transfer(_quantity);
+        require(_quantity <= address(this).balance, 'Insufficient balance in contract');
+        to.transfer(_quantity);
     }
     function balance() external view returns(uint){
         return address(this).balance;
