@@ -1,0 +1,30 @@
+<div class="flex flex-col gap-10 p-4">
+  <div class="text-5xl text-pink-600">
+    Faucet example (Solidity + Angular)
+  </div>
+  <div class="flex flex-col gap-4">
+    <input [(ngModel)]="address" class="rounded p-2 border-pink-700 border border-solid focus:border-2 outline-none  bg-slate-100 w-full  md:w-1/2 font-medium" placeholder="Address">
+
+    <input [(ngModel)]="amount" class="rounded p-2 border-pink-700 border border-solid focus:border-2 outline-none  bg-slate-100 w-full  md:w-1/2 font-medium" placeholder="Amount">
+
+    @if (error) {
+      <div class="p-4 rounded-2xl bg-red-200 border border-solid border-red-600 text-red-600 font-medium">
+        {{error}}
+      </div>
+    }
+    @if (success) {
+      <div class="p-4 rounded-2xl bg-green-200 border border-solid border-green-600 text-green-600 font-medium">
+        Ether successfully sent!
+      </div>
+    }
+    @if (loading) {
+      <div class="p-4 rounded-2xl bg-blue-200 border border-solid border-blue-600 text-blue-600 font-medium">
+        Loading
+      </div>
+    } @else {
+      <button (click)="requestEth()" type="button" class="bg-pink-800 text-white w-full md:w-fit px-6 py-2 rounded-xl hover:contrast-125">
+        Request Eth
+      </button>
+    }
+  </div>
+</div>
