@@ -10,7 +10,7 @@ contract Game2 {
   }
 
   function setY(uint _y) external {
-    y = _y;
+    y = _y; 
   }
 
   event Winner(address winner);
